@@ -27,12 +27,13 @@ body{
     text-align: center;
 }
 .Home > h1 {
-    font-size: 100px;
+    font-size: 90px;
     color: white;
 }
 .overlay{
     width: 100vw;
     height: 100vh;
+    background-image: url("/images/back.webp");
     position: fixed;
     background:linear-gradient(
     to bottom,

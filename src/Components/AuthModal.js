@@ -1,14 +1,15 @@
 import {useState} from "react";
 
-const AuthModal =({setShowModel}) =>
+const AuthModal =({setShowModel , isSignUp }) =>
 {
-    const isSignUp=true;
+
     const [error,setError]=useState(null);
     const [email, setEmail]=useState(null);
     const[password,setPassword]=useState(null);
     const[confirmPassword,setConfirmPassword]=useState(null);
     const handleClick =()=> {
         setShowModel(false);
+
     }
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +30,7 @@ const AuthModal =({setShowModel}) =>
                     <div onClick={handleClick} className="close-icon">
                         <i className="fa fa-remove"></i>
                     </div>
-                    <h2>{isSignUp ? "Sign Up" : "Create Account"}</h2>
+                    <h2>{isSignUp ? "Create Account" : "Login"}</h2>
                     <p>By clicking login you agree to our Terms.Learn
                         how we process your datain our Privacy Policy.
                         and Cookie Policy

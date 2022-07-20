@@ -1,10 +1,12 @@
 import colorLogo from "../images/colorLogo.png"
 import whiteLogo from "../images/whiteLogo.png"
 import AuthModal from "./AuthModal";
+import back from "../images/back.webp";
 
-const Nav = ({minimal , authToken , setShowModal ,showModel }) => {
+const Nav = ({minimal , authToken , setShowModal ,showModel ,setIsSignUp}) => {
     const handleClick=()=>{
         setShowModal(true);
+        setIsSignUp(false);
     }
     return(
         <nav>
