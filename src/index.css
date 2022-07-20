@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500&display=swap');
+
 html{
     margin: 0px;
     padding: 0px;
@@ -33,13 +34,12 @@ body{
 .overlay{
     width: 100vw;
     height: 100vh;
-    background-image: url("/images/back.webp");
     position: fixed;
     background:linear-gradient(
     to bottom,
     rgba(0,0,0,0.65) 0%,
     rgba(0,0,0,0) 100%
-    )
+    ),url("images/back.webp");
 }
 /* ------ Navbar ------ */
 
@@ -81,13 +81,11 @@ nav .navButton:disabled{
     top:0px;
 }
 .auth-modal{
-
-    height: 500px;
     align-items: center;
     max-width: 365px;
     padding: 40px;
     background-color: white;
-    margin: 5% auto;
+    margin: 2% auto;
     border-radius: 5px;
 }
 .close-icon{
@@ -118,4 +116,90 @@ nav .navButton:disabled{
     padding: 8px;
     margin: 8px;
     font-size: 17px;
+}
+
+.form-download {
+
+    height:45px;
+    display: flex;
+    justify-content:space-around;
+}
+.form-download img
+{
+    display:block;
+}
+.auth-modal >img
+{
+    height: 40px;
+}
+
+/* ---- onboard ---*/
+.onBoarding{
+    text-align: center;
+    border-top: 2px solid lightgray;
+}
+.onBoarding form{
+    display:flex;
+    justify-content: center;
+
+}
+.onBoarding form section{
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    padding:20px;
+    text-align: start;
+}
+form input{
+    padding:15px 20px;
+    margin:10px 0px;
+    font-size:15px;
+    border:2px solid lightgray;
+    border-radius:10px;
+}
+.onBoarding form .multiple-input-cont{
+    display: flex;
+    flex-direction: row;
+}
+.onBoarding form input::-webkit-outer-spin-button,
+.onBoarding form input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0px;
+
+}
+.onBoarding form label{
+    margin:10px 0px;
+}
+.onBoarding form .multiple-input-cont input{
+    margin-right: 3px;
+}
+.onBoarding form .multiple-input-cont label{
+    padding:10px;
+    border:2px solid rgb(144,144,144);
+    border-radius: 10px;
+    transition: all 0.5s;
+    margin-right: 10px;
+}
+.onBoarding form input[type="radio"]{
+display: none;
+}
+.onBoarding form input[type="checkbox"]{
+   align-items: start;
+    width: fit-content;
+}
+.onBoarding form input[type="number"]{
+   width: 33.3%;
+}
+.onBoarding form input[type="radio"]:checked + label{
+    border: 2px solid rgb(221,39,22);
+}
+.onBoarding form input[type="submit"]:hover{
+    background-color: rgb(235,235,235);
+}
+.onBoarding form input[type="submit"]:active {
+    background-color: rgb(235, 115, 115);
+}
+.onBoarding form  section .photo-container img{
+    width: 100%;
+    height:80% ;
 }

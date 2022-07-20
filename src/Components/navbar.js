@@ -1,7 +1,7 @@
 import colorLogo from "../images/colorLogo.png"
 import whiteLogo from "../images/whiteLogo.png"
-import AuthModal from "./AuthModal";
-import back from "../images/back.webp";
+import {Link} from "react-router-dom";
+
 
 const Nav = ({minimal , authToken , setShowModal ,showModel ,setIsSignUp}) => {
     const handleClick=()=>{
@@ -11,7 +11,9 @@ const Nav = ({minimal , authToken , setShowModal ,showModel ,setIsSignUp}) => {
     return(
         <nav>
             <div className="logoContainer">
-                <img className="logo" src={minimal ? colorLogo : whiteLogo}/>
+                <Link to="/">
+                    <img className="logo" src={minimal ? colorLogo : whiteLogo}/>
+                </Link>
             </div>
             { !authToken && !minimal &&
                 <button onClick={handleClick} className="navButton"
