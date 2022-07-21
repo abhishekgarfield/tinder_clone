@@ -7,23 +7,23 @@ const Dashboard =() =>{
     const characters = [
         {
             name: 'Richard Hendricks',
-            url: './img/richard.jpg'
+            url: 'https://i.imgur.com/pRlTCjP.jpg'
         },
         {
             name: 'Erlich Bachman',
-            url: './img/erlich.jpg'
+            url: 'https://i.imgur.com/pRlTCjP.jpg'
         },
         {
             name: 'Monica Hall',
-            url: './img/monica.jpg'
+            url: 'https://i.imgur.com/pRlTCjP.jpg'
         },
         {
             name: 'Jared Dunn',
-            url: './img/jared.jpg'
+            url: 'https://i.imgur.com/pRlTCjP.jpg'
         },
         {
             name: 'Dinesh Chugtai',
-            url: './img/dinesh.jpg'
+            url: 'https://i.imgur.com/pRlTCjP.jpg'
         }
     ]
     const [lastDirection, setLastDirection] = useState()
@@ -49,6 +49,9 @@ const Dashboard =() =>{
                                     </div>
                                 </TinderCard>
                             )}
+                            <div className="swipe-info">
+                                {lastDirection ? <p> you swiped {lastDirection} </p>: <p></p>}
+                            </div>
                         </div>
                     </div>
 
