@@ -47,6 +47,8 @@ body{
 nav {
     width:100%;
     display:flex;
+    position: sticky;
+    top:0px;
     justify-content: space-between;
 }
 
@@ -404,8 +406,11 @@ footer select
 footer>p
 {
     font-size: 12px;
+    clear: both;
     margin-top: 0rem;
-    color: rgb(79, 79, 79);
+    padding-top: 1rem;
+    font-weight: lighter;
+    color: darkgray;
     line-height: 1.7rem;
 
 }
