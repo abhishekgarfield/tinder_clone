@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Nav from "../Components/navbar";
+import Footer from "../Components/Footer";
 
 const OnBoarding = () => {
     const [formInfo, setFormInfo] = useState(
@@ -176,6 +177,8 @@ const OnBoarding = () => {
                     </section>
                 </form>
             </div>
+            <hr/>
+            <Footer />
         </>
     );
 }

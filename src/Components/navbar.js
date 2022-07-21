@@ -10,10 +10,20 @@ const Nav = ({minimal , authToken , setShowModal ,showModel ,setIsSignUp}) => {
     }
     return(
         <nav>
-            <div className="logoContainer">
-                <Link to="/">
-                    <img className="logo" src={minimal ? colorLogo : whiteLogo}/>
-                </Link>
+            <div className="left-nav-container">
+                <div className="logoContainer">
+                    <Link to="/">
+                        <img className="logo" src={minimal ? colorLogo : whiteLogo}/>
+                    </Link>
+
+                </div>
+                <ul>
+                    <li>Products</li>
+                    <li>Learn</li>
+                    <li>Safety</li>
+                    <li>Support</li>
+                    <li>Download</li>
+                </ul>
             </div>
             { !authToken && !minimal &&
                 <button onClick={handleClick} className="navButton"

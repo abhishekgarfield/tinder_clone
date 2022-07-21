@@ -2,6 +2,7 @@ import Nav from "../Components/navbar"
 import { useState } from "react"
 import AuthModal from "../Components/AuthModal";
 import '/node_modules/font-awesome/css/font-awesome.min.css';
+import Footer from "../Components/Footer";
 
 
 const Homepage =() =>{
@@ -17,7 +18,7 @@ const Homepage =() =>{
     }
     return(
         <>
-            <div className="overlay">
+            <div className="overlay" >
                 <Nav minimal={false}
                      authToken={authToken}
                      setShowModal={setShowModal}
@@ -29,9 +30,12 @@ const Homepage =() =>{
                     <button className="primaryButton" onClick={handleClick}>
                         { authToken ? "Login" : "Create Account"}
                     </button>
+
                     {showModal && <AuthModal setShowModel={setShowModal} isSignUp={isSignUp} setIsSignUp={setIsSignUp}/>}
                 </div>
             </div>
+            <Footer/>
+
             </>
     );
 }

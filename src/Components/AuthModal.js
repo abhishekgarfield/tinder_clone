@@ -17,7 +17,7 @@ const AuthModal =({setShowModel , isSignUp }) =>
     const handleSubmit = (e) => {
         e.preventDefault()
         try{
-            if(isSignUp && (password==confirmPassword)) {
+            if(isSignUp && (password === confirmPassword)) {
                 setError("Passwords need to match");
             }
             console.log("make request to database");
@@ -33,7 +33,7 @@ const AuthModal =({setShowModel , isSignUp }) =>
                     <div onClick={handleClick} className="close-icon">
                         <i className="fa fa-remove"></i>
                     </div>
-                    <img  src={tinder}/>
+                    <img  src={tinder} alt="logo"/>
                     <h2>{isSignUp ? "Create Account" : "Login"}</h2>
                     <p>By clicking login you agree to our Terms.Learn
                         how we process your data in our Privacy Policy.
@@ -73,8 +73,8 @@ const AuthModal =({setShowModel , isSignUp }) =>
                     <hr/>
                     <h2>GET THE APP</h2>
                     <div className="form-download">
-                        <img src ={ playstore2 } />
-                        <img src= { appstore } />
+                        <img src ={ playstore2 } alt="playstore" />
+                        <img src= { appstore } alt="appstore" />
                     </div>
                  </div>
             </div>
