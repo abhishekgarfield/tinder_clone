@@ -64,6 +64,7 @@ const Footer = () => {
                     single people at your fingertips and they’re all ready to meet someone like you. Whether you’re
                     straight or in the LGBTQIA community, Tinder’s here to bring you all the sparks.
                 </p>
+
                 <p>
                     There really is something for everyone on Tinder. Want to get into a relationship? You got it.
                     Trying to find some new friends? Say no more. New kid on campus and looking to make the most of your

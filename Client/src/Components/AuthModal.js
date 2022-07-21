@@ -3,7 +3,7 @@ import tinder from "../images/tinder.png";
 import playstore2 from "../images/playstore2.jpg";
 import appstore from "../images/appstore.webp";
 
-const AuthModal =({setShowModel , isSignUp }) =>
+const AuthModal =({setShowModel , isSignUp , authToken }) =>
 {
 
     const [error,setError]=useState(null);
@@ -34,7 +34,7 @@ const AuthModal =({setShowModel , isSignUp }) =>
                         <i className="fa fa-remove"></i>
                     </div>
                     <img  src={tinder} alt="logo"/>
-                    <h2>{isSignUp ? "Create Account" : "Login"}</h2>
+                    <h2>{(isSignUp && !authToken) ? "Create Account" : "Login"}</h2>
                     <p>By clicking login you agree to our Terms.Learn
                         how we process your data in our Privacy Policy.
                         and Cookie Policy
@@ -56,14 +56,14 @@ const AuthModal =({setShowModel , isSignUp }) =>
                             required={true}
                             onChange={(e)=>setPassword(e.target.value)}
                         />
-                        {isSignUp && <input
+                        {isSignUp && (!authToken && <input
                             type="password"
                             id="confirmPassword"
                             name="confirmPassword"
                             placeholder="confirmPassword"
                             required={true}
                             onChange={(e)=>setConfirmPassword(e.target.value)}
-                        />}
+                        />)}
                         <input
                             type="submit"
                             className="sec-button"

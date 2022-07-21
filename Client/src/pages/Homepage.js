@@ -31,7 +31,7 @@ const Homepage =() =>{
                         { authToken ? "Login" : "Create Account"}
                     </button>
 
-                    {showModal && <AuthModal setShowModel={setShowModal} isSignUp={isSignUp} setIsSignUp={setIsSignUp}/>}
+                    {showModal && <AuthModal setShowModel={setShowModal} isSignUp={isSignUp} authToken={authToken}/>}
                 </div>
             </div>
             <Footer/>
