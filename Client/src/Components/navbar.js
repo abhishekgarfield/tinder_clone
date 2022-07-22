@@ -17,13 +17,13 @@ const Nav = ({minimal , authToken , setShowModal ,showModel ,setIsSignUp}) => {
                     </Link>
 
                 </div>
-                <ul>
+                {!minimal && <ul>
                     <li>Products</li>
                     <li>Learn</li>
                     <li>Safety</li>
                     <li>Support</li>
                     <li>Download</li>
-                </ul>
+                </ul>}
             </div>
             { !authToken && !minimal &&
                 <button onClick={handleClick} className="navButton"
