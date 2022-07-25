@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 
 const Homepage =() =>{
 
-    const authToken=false;
+    const authToken=true;
     const[showModal,setShowModal]=useState(false);
      const[isSignUp,setIsSignUp]=useState(false);
 
@@ -34,7 +34,7 @@ const Homepage =() =>{
                     {showModal && <AuthModal setShowModel={setShowModal} isSignUp={isSignUp} authToken={authToken}/>}
                 </div>
             </div>
-            <Footer/>
+            {!(showModal) && <Footer/>}
 
             </>
     );

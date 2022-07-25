@@ -110,6 +110,7 @@ nav .navButton:disabled{
             rgba(0,0,0,0.80) 0%,
             rgba(0,0,0,0.80) 100%
     );
+    background-attachment: fixed;
 }
 .auth-modal{
     align-items: center;
