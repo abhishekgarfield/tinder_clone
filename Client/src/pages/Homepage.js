@@ -7,9 +7,9 @@ import Footer from "../Components/Footer";
 
 const Homepage =() =>{
 
-    const authToken=true;
+    const authToken=false;
     const[showModal,setShowModal]=useState(false);
-     const[isSignUp,setIsSignUp]=useState(false);
+     const[isSignUp,setIsSignUp]=useState(true);
 
     const handleClick= () => {
         console.log("button clicked");
