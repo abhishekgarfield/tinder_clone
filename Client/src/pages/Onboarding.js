@@ -1,11 +1,15 @@
 import {useState} from "react";
 import Nav from "../Components/navbar";
 import Footer from "../Components/Footer";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie"
 
 const OnBoarding = () => {
+    const [cookies , setCookie ,removeCookie]=useCookies();
     const [formInfo, setFormInfo] = useState(
         {
-            user_id:"",
+            user_id:cookies.user_id,
             first_name:'',
             dob_day:"",
             dob_month:"",
@@ -14,23 +18,32 @@ const OnBoarding = () => {
             show_gender:false,
             gender_interest:"",
             about:"",
-            email:"",
             url:"",
             matches:[]
-        }
-    );
+        });
 
-    const handleSubmit = (e) => {
+
+    let navigate=useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("on submit");
+        try {
+            const response = await axios.put("http://localhost:8000/user", {formInfo});
+            const success = response.status === 201;
+            if(success) navigate("/dashboard");
+        }catch(err)
+        {
+            console.log(err);
+        }
     }
     const handleChange = (e) => {
         console.log(e);
         const value = (e.target.type === "checkbox" ? e.target.checked : e.target.value)
         const name = e.target.name
    console.log(name +" "+value)
-        setFormInfo({...formInfo , [name]:e.target.value});
+        setFormInfo({...formInfo , [name]:value});
     }
-    console.log(formInfo);
     return (
         <>
             <Nav showModel={false} minimal={true} setShowModal={() => {
@@ -115,6 +128,7 @@ const OnBoarding = () => {
                             id="show-gender"
                             type="checkbox"
                             name="show_gender"
+                            checked={formInfo.show_gender}
                             onChange={handleChange}
 
                         />

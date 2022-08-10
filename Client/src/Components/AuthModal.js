@@ -2,6 +2,9 @@ import {useState} from "react";
 import tinder from "../images/tinder.png";
 import playstore2 from "../images/playstore2.jpg";
 import appstore from "../images/appstore.webp";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const AuthModal =({setShowModel , isSignUp , authToken }) =>
 {
@@ -10,21 +13,42 @@ const AuthModal =({setShowModel , isSignUp , authToken }) =>
     const [email, setEmail]=useState(null);
     const[password,setPassword]=useState(null);
     const[confirmPassword,setConfirmPassword]=useState(null);
+    const[cookies,setCookie, removeCookie]=useCookies();
+    let navigate= useNavigate();
     const handleClick =()=> {
         setShowModel(false);
 
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        try{
-            if(isSignUp && (password === confirmPassword)) {
-                setError("Passwords need to match");
+            try {
+                if (isSignUp && !(password === confirmPassword)) {
+                    setError("Passwords need to match");
+                    return;
+                }
+                const response = await axios.post(`http://localhost:8000/${isSignUp ? `signup` : `login`}`, {email, password});
+                const success = response.status === 201;
+                setCookie("user_id",response.data.user_id);
+                setCookie("AuthToken",response.data.token);
+
+                const userError = response.status === 206;
+                if (success && isSignUp) {
+                    navigate("/onboard");
+                }
+                if(success && !isSignUp)
+                {
+                    navigate("/dashboard");
+                }
+                if (userError && isSignUp) {
+                    setError("User already exists");
+                }
+                if (userError && !isSignUp) {
+                    setError("Wrong credentials");
+                }
+            } catch (error) {
+                console.log(error);
             }
-            console.log("make request to database");
-        }
-        catch (error){
-            console.log(error);
-        }
+
     }
     return(
         <>

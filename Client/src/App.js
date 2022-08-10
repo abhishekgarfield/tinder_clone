@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Homepage from "./pages/Homepage";
 import Dashboard from "./pages/Dashboard";
 import OnBoarding from "./pages/Onboarding";

@@ -137,6 +137,9 @@ nav .navButton:disabled{
     border: 2px solid darkgray;
     margin: 6px;
 }
+.sec-button:active{
+    color:black;
+}
 .sec-button:hover{
     color: rgb(48,48,48);
 }
@@ -165,6 +168,9 @@ nav .navButton:disabled{
 .auth-modal >img
 {
     height: 40px;
+}
+.NVN{
+    color:red;
 }
 
 /* ---- onboard ---*/
