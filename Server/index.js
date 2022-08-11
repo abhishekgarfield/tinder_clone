@@ -7,7 +7,7 @@ const bcrypt =require("bcrypt");
 const cors =require("cors");
 const jwt=require("jsonwebtoken");
 const {v4} = require("uuid");
-const uri="mongodb+srv://abhishek:@cluster0.lekcj.mongodb.net/?retryWrites=true&w=majority";
+const uri='mongodb+srv://abhishek:@cluster0.lekcj.mongodb.net/?retryWrites=true&w=majority';
 app.use(cors());
 app.use(express.json());
 app.get("/us",async (req,res)=>{
@@ -86,7 +86,7 @@ app.post("/login",async (req,res)=>{
     }
 
 });
-app.put("/user",async  (req,res)=>{
+app.put("/userUpdate",async  (req,res)=>{
     console.log("i m in onboard update");
     const client=new mongoClient(uri);
     const {formInfo} =req.body;
@@ -108,7 +108,6 @@ app.put("/user",async  (req,res)=>{
         "matches":formInfo.matches
             }};
         const updateUser=await users.updateOne(query,setQuery);
-        console.log(updateUser);
         res.status(201).send(updateUser);
     }catch(err)
     {
@@ -119,31 +118,30 @@ app.put("/user",async  (req,res)=>{
        await  client.close();
     }
 });
-/*
-app.post("/login", async (req,res)=>{
-    console.log("in login");
-  const {email , password}=req.body;
-  const hashedPassword=await bcrypt.hash(password,10);
-  const client= new mongoClient(uri);
-  try{
-      const database=await client.db("app-data");
-      const users=await database.collection("users");
-      const userFound=await users.findOne( {"email":email});
-      console.log(userFound);
-      if(!userFound)
-      { console.log("no user founf")
-          return res.status(210).send();
-      }
-      res.status(201).send();
-  }
-  catch(err)
-  {
-      throw err;
-  }
+
+app.get("/user", async (req,res)=>{
+    console.log("i m in user");
+    const client=new mongoClient(uri);
+    const {user_id} =req.query;
+    console.log(user_id);
+    try{
+        await client.connect();
+        const database=client.db("app-data");
+        const users=await database.collection("users");
+        const query={"user_id":user_id};
+        const user=await users.findOne(query);
+        console.log(user);
+        res.send(user);
+
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+    finally {
+        await client.close();
+    }
 })
-*/
-
-
 
 app.listen(port,()=>{console.log("server running on : " + port)});
 

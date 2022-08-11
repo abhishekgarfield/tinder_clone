@@ -37,7 +37,9 @@ const AuthModal =({setShowModel , isSignUp , authToken }) =>
                 }
                 if(success && !isSignUp)
                 {
+                    console.log("before navigate");
                     navigate("/dashboard");
+                    console.log("after navigate");
                 }
                 if (userError && isSignUp) {
                     setError("User already exists");
@@ -45,6 +47,7 @@ const AuthModal =({setShowModel , isSignUp , authToken }) =>
                 if (userError && !isSignUp) {
                     setError("Wrong credentials");
                 }
+                console.log("after dashboard")
             } catch (error) {
                 console.log(error);
             }
