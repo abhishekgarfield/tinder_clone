@@ -7,7 +7,7 @@ const bcrypt =require("bcrypt");
 const cors =require("cors");
 const jwt=require("jsonwebtoken");
 const {v4} = require("uuid");
-const uri='mongodb+srv://abhishek:@cluster0.lekcj.mongodb.net/?retryWrites=true&w=majority';
+const uri='mongodb+srv://abhishek@cluster0.lekcj.mongodb.net/?retryWrites=true&w=majority';
 app.use(cors());
 app.use(express.json());
 app.get("/us",async (req,res)=>{
