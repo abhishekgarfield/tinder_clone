@@ -7,14 +7,14 @@ import { useCookies } from "react-cookie";
 
 const Dashboard =() =>{
     const[cookies,setCookie,removeCookie]=useCookies([]);
-    const[user,setUser]=useState({});
-    const[genderedUsers,setgenderedUsers]=useState({});
+    const[user,setUser]=useState(null);
+    const[genderedUsers,setgenderedUsers]=useState([]);
+    const [lastDirection, setLastDirection] = useState()
     const user_id=cookies.user_id;
     console.log(user_id)
 
     const getUser =async ()=>{
         try{
-            console.log("i m in get request");
 
            const response=await axios.get('http://localhost:8000/user', { params:
                    {
@@ -28,7 +28,6 @@ const Dashboard =() =>{
         }
     }
     const getgenderedUsers=async ()=>{
-        console.log("in genderedUsers");
         try{
             const response=await axios.get("http://localhost:8000/genderedusers",{
                 params:{
@@ -43,40 +42,30 @@ const Dashboard =() =>{
 
     }
 
-    console.log("user:", user.first_name);
     useEffect(()=>{
         getUser();
         getgenderedUsers();
-    },[]);
+    },[user,genderedUsers]);
+    console.log(user);
 
+    const updateMatches=async (matchedUserid) =>{
+        try {
+            const response = await axios.put("http://localhost:8000/addmatch", {user_id, matchedUserid});
 
+            getUser();
 
-    const characters = [
+        }catch(err)
         {
-            name: 'Richard Hendricks',
-            url: 'https://i.imgur.com/pRlTCjP.jpg'
-        },
-        {
-            name: 'Erlich Bachman',
-            url: 'https://i.imgur.com/pRlTCjP.jpg'
-        },
-        {
-            name: 'Monica Hall',
-            url: 'https://i.imgur.com/pRlTCjP.jpg'
-        },
-        {
-            name: 'Jared Dunn',
-            url: 'https://i.imgur.com/pRlTCjP.jpg'
-        },
-        {
-            name: 'Dinesh Chugtai',
-            url: 'https://i.imgur.com/pRlTCjP.jpg'
+            console.log(err);
         }
-    ]
-    const [lastDirection, setLastDirection] = useState()
-
-    const swiped = (direction, nameToDelete) => {
-        console.log('removing: ' + nameToDelete)
+    }
+    const matchedUserId=user?.matches.map(({user_id})=>user_id).concat(user_id);
+    const filteredMatchedUsers=genderedUsers.filter((genderedUsers)=>!matchedUserId.includes(genderedUsers.user_id));
+    const swiped = (direction, swipedUserId) => {
+        if(direction==="right")
+        {
+            updateMatches(swipedUserId)
+        }
         setLastDirection(direction)
     }
 
@@ -85,14 +74,14 @@ const Dashboard =() =>{
     }
     return(
         <>
-            <div className="dashboard" >
+            {user && <div className="dashboard" >
                 <ChatContainer user={user} />
                     <div className="swipe-container">
                         <div className="card-container">
-                            {characters.map((character) =>
-                                <TinderCard className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
+                            {filteredMatchedUsers?.map((character) =>
+                                <TinderCard className='swipe' key={character.first_name} onSwipe={(dir) => swiped(dir, character.user_id)} onCardLeftScreen={() => outOfFrame(character.first_name)}>
                                     <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
-                                        <h3>{character.name}</h3>
+                                        <h3>{character.first_name}</h3>
                                     </div>
                                 </TinderCard>
                             )}
@@ -102,7 +91,7 @@ const Dashboard =() =>{
                         </div>
                     </div>
 
-            </div>
+            </div> }
 
         </>
     );

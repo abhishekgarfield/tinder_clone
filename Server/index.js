@@ -7,7 +7,7 @@ const bcrypt =require("bcrypt");
 const cors =require("cors");
 const jwt=require("jsonwebtoken");
 const {v4} = require("uuid");
-const uri='mongodb+srv://abhishek@cluster0.lekcj.mongodb.net/?retryWrites=true&w=majority';
+const uri='mongodb+srv://abhishek:@cluster0.lekcj.mongodb.net/?retryWrites=true&w=majority';
 app.use(cors());
 app.use(express.json());
 app.get("/us",async (req,res)=>{
@@ -130,7 +130,6 @@ app.get("/user", async (req,res)=>{
         const users=await database.collection("users");
         const query={"user_id":user_id};
         const user=await users.findOne(query);
-        console.log(user);
         res.send(user);
 
     }
@@ -140,6 +139,48 @@ app.get("/user", async (req,res)=>{
     }
     finally {
         await client.close();
+    }
+})
+app.get("/genderedusers", async (req,res)=>{
+    console.log("i m in genderedusers");
+    const client=new mongoClient(uri);
+    const {gender_interest} =req.query;
+    console.log(gender_interest);
+    try{
+        await client.connect();
+        const database=await client.db("app-data");
+        const users=await database.collection("users");
+        const query={"gender_identity":{$eq: gender_interest}};
+        const user=await users.find(query).toArray();
+        res.send(user);
+        console.log(user);
+
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+    finally {
+        await client.close();
+    }
+})
+
+app.put("/addmatch",async (req,res)=>{
+    const client=new mongoClient(uri);
+    const { user_id, matchedUserid}=req.body;
+    try{
+        await client.connect();
+        const database=client.db("app-data");
+        const users=database.collection("users");
+        const query={"user_id":user_id};
+        const setQuery={$push:{"matches": {"user_id":matchedUserid}}};
+        const user=await users.updateOne(query,setQuery);
+        res.send(user);
+
+    }
+    catch(err)
+    {
+        console.log(err);
     }
 })
 
