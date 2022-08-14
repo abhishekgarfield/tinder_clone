@@ -9,7 +9,7 @@ const ChatContainer=({user})=>{
                 <Chatheader user={user}/>
                 <button className="option">matches</button>
                 <button className="option">chats</button>
-                <MatchDisplay user={user}/>
+                <MatchDisplay matches={user.matches}/>
                 <ChatDisplay/>
             </div>
         </>

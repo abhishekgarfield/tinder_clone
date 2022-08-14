@@ -1,8 +1,8 @@
-const MatchDisplay=({user})=>{
+const MatchDisplay=({matches})=>{
     return(
         <>
             <div className="matchesdisplay">
-                <div className="users">{user.matches.map((users)=>)}</div>
+                <div className="users">{matches.map((user)=>user.user_id+" ")}</div>
             </div>
         </>
     );
