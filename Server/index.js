@@ -120,10 +120,9 @@ app.put("/userUpdate",async  (req,res)=>{
 });
 
 app.get("/user", async (req,res)=>{
-    console.log("i m in user");
+    console.log("user")
     const client=new mongoClient(uri);
     const {user_id} =req.query;
-    console.log(user_id);
     try{
         await client.connect();
         const database=client.db("app-data");
@@ -142,10 +141,9 @@ app.get("/user", async (req,res)=>{
     }
 })
 app.get("/genderedusers", async (req,res)=>{
-    console.log("i m in genderedusers");
+    console.log("genderedusers");
     const client=new mongoClient(uri);
     const {gender_interest} =req.query;
-    console.log(gender_interest);
     try{
         await client.connect();
         const database=await client.db("app-data");
@@ -153,7 +151,6 @@ app.get("/genderedusers", async (req,res)=>{
         const query={"gender_identity":{$eq: gender_interest}};
         const user=await users.find(query).toArray();
         res.send(user);
-        console.log(user);
 
     }
     catch(err)
@@ -166,6 +163,7 @@ app.get("/genderedusers", async (req,res)=>{
 })
 
 app.put("/addmatch",async (req,res)=>{
+    console.log("add match")
     const client=new mongoClient(uri);
     const { user_id, matchedUserid}=req.body;
     try{
@@ -181,6 +179,60 @@ app.put("/addmatch",async (req,res)=>{
     catch(err)
     {
         console.log(err);
+    }
+    finally {
+        await client.close();
+    }
+})
+app.get("/users", async (req,res)=>{
+    console.log("in matched userids");
+    const client=new mongoClient(uri);
+    const {userids}=req.query;
+    try{
+        await client.connect();
+        const database=client.db("app-data");
+        const users=database.collection("users");
+        const pipeline=
+            [
+                {
+                    "$match":{
+                        "user_id": {
+                            "$in" : userids
+                        }
+                    }
+                }
+            ]
+        const foundUsers= await users.aggregate(pipeline).toArray();
+        res.send(foundUsers);
+
+    }
+    catch (err)
+    {
+        console.log(err);
+    }
+    finally {
+        await client.close();
+    }
+})
+app.get("/messages", async (req,res)=>{
+    console.log("messages");
+    const client=new mongoClient(uri);
+    const{userid,clickedUserId}=req.query;
+    try{
+       await  client.connect();
+       const  database=client.db("app-data");
+       const messages= await database.collection("messages");
+       const query={$and:[{"from_userId":userid },{"to_userId":clickedUserId}]};
+       const foundMessages= await messages.find(query).toArray();
+       res.send(foundMessages);
+       console.log(foundMessages);
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+    finally {
+        await client.close();
     }
 })
 

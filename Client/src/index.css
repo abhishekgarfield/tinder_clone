@@ -341,9 +341,9 @@ display: none;
 }
 
 .img-container {
-    height: 30px;
-    width: 30px;
-    border-radius: 15px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
     overflow: hidden;
     margin: 10px;
 }
@@ -358,6 +358,16 @@ display: none;
     height: 55vh;
     overflow-y: auto;
 }
+.match-card , .chat-message-header{
+    width: 96%;
+    padding: 3% 2% 0% 2%;
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+}
+.match-card h3,.chat-message-header p{
+    flex: 1;
+}
 
 /*-------- Chat Input --------*/
 .chat-input {
@@ -369,7 +379,7 @@ display: none;
    margin:7px 0;
     border-radius: 6px;
 }
-.fa-sign-out{
+.log-out-icon.fa.fa-sign-out{
     font-size: 1.5rem;
 }
 

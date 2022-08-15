@@ -1,7 +1,6 @@
 import Nav from "../Components/navbar"
 import { useState } from "react"
 import AuthModal from "../Components/AuthModal";
-import '/node_modules/font-awesome/css/font-awesome.min.css';
 import Footer from "../Components/Footer";
 
 
