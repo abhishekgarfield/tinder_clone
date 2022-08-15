@@ -1,6 +1,6 @@
 # tinder_clone
 
-This is a thder clone complete front-end and back-end<img width="1440" alt="Screenshot 2022-08-15 at 7 03 45 PM" src="https://user-images.githubusercontent.com/49722470/184662734-e91beac3-8966-4bc8-83ba-7e362c1048a8.png">
+This is a tider clone and has  complete front-end and back-end
 
 This has sign up , login , onboarding details , swipe right to match , chat with matched users.
 
