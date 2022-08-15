@@ -1,6 +1,6 @@
-# tinder_clone
+# Tinder_clone
 
-This is a tider clone and has  complete front-end and back-end
+This is a tinder clone and has  complete front-end and back-end
 
 This has sign up , login , onboarding details , swipe right to match , chat with matched users.
 
