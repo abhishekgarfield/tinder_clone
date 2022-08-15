@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 
 const Dashboard =() =>{
     const[cookies,setCookie,removeCookie]=useCookies([]);
-    const[user,setUser]=useState(null);
+    const[user,setUser]=useState();
     const[genderedUsers,setgenderedUsers]=useState([]);
     const [lastDirection, setLastDirection] = useState()
     const user_id=cookies.user_id;
@@ -28,10 +28,12 @@ const Dashboard =() =>{
     }
     const getgenderedUsers=async ()=>{
         try{
+            console.log("in gendered users");
             const response=await axios.get("http://localhost:8000/genderedusers",{
                 params:{
-                    "gender_interest":user.gender_interest
+                    "gender_interest":user?.gender_interest
                 }});
+
                 setgenderedUsers(response.data);
         }catch (err)
         {
@@ -43,8 +45,11 @@ const Dashboard =() =>{
 
     useEffect(()=>{
         getUser();
-        getgenderedUsers();
     },[]);
+    useEffect(()=>{
+        getgenderedUsers()
+    },[user])
+    console.log(genderedUsers);
 
     const updateMatches=async (matchedUserid) =>{
         try {
@@ -53,6 +58,7 @@ const Dashboard =() =>{
             getUser();
 
         }catch(err)
+
         {
             console.log(err);
         }
@@ -77,9 +83,10 @@ const Dashboard =() =>{
                     <div className="swipe-container">
                         <div className="card-container">
                             {filteredMatchedUsers?.map((character) =>
-                                <TinderCard className='swipe' key={character.first_name} onSwipe={(dir) => swiped(dir, character.user_id)} onCardLeftScreen={() => outOfFrame(character.first_name)}>
+                                <TinderCard className='swipe' key={character.user_id} onSwipe={(dir) => swiped(dir, character.user_id)} onCardLeftScreen={() => outOfFrame(character.first_name)}>
                                     <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
                                         <h3>{character.first_name}</h3>
+                                        <h4>{character.about}</h4>
                                     </div>
                                 </TinderCard>
                             )}

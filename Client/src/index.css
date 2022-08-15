@@ -66,7 +66,8 @@ nav .logoContainer .logo{
     width: 100%;
 }
 nav .left-nav-container{
-    display: flex;justify-content: start;
+    display:flex;
+    justify-content: flex-start;
 }
 nav ul{
     display: flex;
@@ -100,11 +101,11 @@ nav .navButton:disabled{
 
 /* authmodal */
 .cont1{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     top:0px;
-    transition: 10s all;
+    z-index: 14;
     background:linear-gradient(
             to bottom,
             rgba(0,0,0,0.80) 0%,
@@ -115,12 +116,12 @@ nav .navButton:disabled{
 .auth-modal{
     align-items: center;
     max-width: 365px;
-    padding: 40px;
+    height: 80vh;
+    padding: 5vh;
     background-color: white;
-    margin: 2% auto;
+    margin:  5vh auto;
     border-radius: 5px;
     transform: scale();
-    transition: 10s all;
 }
 .close-icon{
     float: right;
@@ -287,8 +288,15 @@ display: none;
     right: 0;
     top:0;
     bottom: 0;
-;
-
+}
+.card h4{
+    margin: 0rem;
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+}
+.card h4:before{
+    content: "- ";
 }
 
 .dashboard .swipe-info {
@@ -360,10 +368,19 @@ display: none;
 }
 .match-card , .chat-message-header{
     width: 96%;
-    padding: 3% 2% 0% 2%;
+    margin: 3% 2% 0% 2%;
     flex-direction: row;
     display: flex;
     justify-content: flex-start;
+}
+.option , .match-card:hover{
+    background-color: #F0F0F0;
+    cursor:pointer;
+}
+.option:hover{
+    background-color: #F0F0F0;
+    cursor:pointer;
+
 }
 .match-card h3,.chat-message-header p{
     flex: 1;
@@ -381,6 +398,12 @@ display: none;
 }
 .log-out-icon.fa.fa-sign-out{
     font-size: 1.5rem;
+}
+.log-out-icon.fa.fa-sign-out:hover{
+        background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));	;
+color: black;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 /* footer */

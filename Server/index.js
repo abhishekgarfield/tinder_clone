@@ -7,7 +7,8 @@ const bcrypt =require("bcrypt");
 const cors =require("cors");
 const jwt=require("jsonwebtoken");
 const {v4} = require("uuid");
-const uri='mongodb+srv://abhishek:@cluster0.lekcj.mongodb.net/?retryWrites=true&w=majority';
+require("dotenv").config();
+const uri=process.env.URI;
 app.use(cors());
 app.use(express.json());
 app.get("/us",async (req,res)=>{
@@ -192,18 +193,23 @@ app.get("/users", async (req,res)=>{
         await client.connect();
         const database=client.db("app-data");
         const users=database.collection("users");
-        const pipeline=
-            [
-                {
-                    "$match":{
-                        "user_id": {
-                            "$in" : userids
+        if(userids) {
+            const pipeline =
+                [
+                    {
+                        "$match": {
+                            "user_id": {
+                                "$in": userids
+                            }
                         }
                     }
-                }
-            ]
-        const foundUsers= await users.aggregate(pipeline).toArray();
-        res.send(foundUsers);
+                ]
+            const foundUsers = await users.aggregate(pipeline).toArray();
+            res.send(foundUsers);
+        }
+        else {
+            res.send([]);
+        }
 
     }
     catch (err)
@@ -233,6 +239,24 @@ app.get("/messages", async (req,res)=>{
     }
     finally {
         await client.close();
+    }
+})
+app.post("/addmessage",async (req,res)=>{
+    const client=new mongoClient(uri);
+    const{message}=req.body;
+    try{
+        await client.connect();
+        const database=client.db("app-data");
+        const messages=database.collection("messages");
+        const response=await messages.insertOne(message);
+        res.send(response);
+    }
+    catch (err)
+    {
+        console.log(err);
+    }
+    finally {
+        await  client.close();
     }
 })
 
