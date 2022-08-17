@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/tinder_clone/static/css/main.88bcd1b7.css",
+    "main.js": "/tinder_clone/static/js/main.871dd182.js",
+    "static/media/back.webp": "/tinder_clone/static/media/back.715aa50b534bdeacda2e.webp",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/tinder_clone/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/colorLogo.png": "/tinder_clone/static/media/colorLogo.934024fb3bb9ebea7a0a.png",
+    "static/media/fontawesome-webfont.eot": "/tinder_clone/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/tinder_clone/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/tinder_clone/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/tinder_clone/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/tinder.png": "/tinder_clone/static/media/tinder.80e9fa86fb57ab24a747.png",
+    "static/media/playstore2.jpg": "/tinder_clone/static/media/playstore2.c2649a3f11fb0d1d6a75.jpg",
+    "static/media/whiteLogo.png": "/tinder_clone/static/media/whiteLogo.52755897e9ce60837fac.png",
+    "static/media/appstore.webp": "/tinder_clone/static/media/appstore.657b87b9871a394fbe5d.webp",
+    "index.html": "/tinder_clone/index.html",
+    "main.88bcd1b7.css.map": "/tinder_clone/static/css/main.88bcd1b7.css.map",
+    "main.871dd182.js.map": "/tinder_clone/static/js/main.871dd182.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88bcd1b7.css",
+    "static/js/main.871dd182.js"
+  ]
+}
