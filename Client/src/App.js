@@ -10,9 +10,11 @@ const App = () =>{
     return(
         <BrowserRouter basename={process.env.PUBLIC_URL} >
           <Routes>
-              <Route path="/" element={<Homepage />} />
+              <Route path="/" element={<Homepage />}>
               {cookies.AuthToken && <Route path="/dashboard" element={<Dashboard />} />}
               {cookies.AuthToken && <Route path="/onboard" element={< OnBoarding/>} />}
+              </Route>
+
           </Routes>
       </BrowserRouter>
     );
