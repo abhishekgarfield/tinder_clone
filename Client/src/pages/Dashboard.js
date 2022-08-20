@@ -64,7 +64,7 @@ const Dashboard =() =>{
         }
     }
     const matchedUserId=user?.matches.map(({user_id})=>user_id).concat(user_id);
-    const filteredMatchedUsers=genderedUsers.filter((genderedUsers)=>!matchedUserId.includes(genderedUsers.user_id));
+    const filteredMatchedUsers=genderedUsers?.filter((genderedUsers)=>!matchedUserId.includes(genderedUsers.user_id));
     const swiped = (direction, swipedUserId) => {
         if(direction==="right")
         {

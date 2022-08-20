@@ -8,13 +8,11 @@ import { useCookies } from "react-cookie";
 const App = () =>{
     const [cookies,setCookie,removeCookie]=useCookies([]);
     return(
-        <BrowserRouter basename={process.env.PUBLIC_URL} >
+        <BrowserRouter >
           <Routes>
-              <Route path="/" element={<Homepage />}>
-              {cookies.AuthToken && <Route path="/dashboard" element={<Dashboard />} />}
-              {cookies.AuthToken && <Route path="/onboard" element={< OnBoarding/>} />}
-              </Route>
-
+                <Route index element={<Homepage />}/>
+                {cookies.AuthToken && <Route path="/dashboard" element={<Dashboard />} />}
+                {cookies.AuthToken && <Route path="onboard" element={< OnBoarding/>} />}
           </Routes>
       </BrowserRouter>
     );

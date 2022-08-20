@@ -31,7 +31,7 @@ const OnBoarding = () => {
         try {
             const response = await axios.put("http://localhost:8000/userUpdate", {formInfo});
             const success = response.status === 201;
-            if(success) navigate("/dashboard");
+            if(success) navigate("/tinder_clone/dashboard");
         }catch(err)
         {
             console.log(err);
