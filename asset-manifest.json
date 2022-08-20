@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tinder_clone/static/css/main.88bcd1b7.css",
-    "main.js": "/tinder_clone/static/js/main.58114d75.js",
+    "main.js": "/tinder_clone/static/js/main.89ed8ab3.js",
     "static/media/back.webp": "/tinder_clone/static/media/back.715aa50b534bdeacda2e.webp",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/tinder_clone/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/colorLogo.png": "/tinder_clone/static/media/colorLogo.934024fb3bb9ebea7a0a.png",
@@ -15,10 +15,10 @@
     "static/media/appstore.webp": "/tinder_clone/static/media/appstore.657b87b9871a394fbe5d.webp",
     "index.html": "/tinder_clone/index.html",
     "main.88bcd1b7.css.map": "/tinder_clone/static/css/main.88bcd1b7.css.map",
-    "main.58114d75.js.map": "/tinder_clone/static/js/main.58114d75.js.map"
+    "main.89ed8ab3.js.map": "/tinder_clone/static/js/main.89ed8ab3.js.map"
   },
   "entrypoints": [
     "static/css/main.88bcd1b7.css",
-    "static/js/main.58114d75.js"
+    "static/js/main.89ed8ab3.js"
   ]
 }
