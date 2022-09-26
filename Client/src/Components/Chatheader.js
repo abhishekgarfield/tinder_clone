@@ -10,7 +10,7 @@ const Chatheader=({user})=>{
         removeCookie("user_id",cookies.user_id);
         removeCookie("AuthToken",cookies.AuthToken);
 
-        navigate("/");
+        navigate("/homepage");
         window.location.reload();
     }
     return(
