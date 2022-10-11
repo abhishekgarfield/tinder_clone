@@ -13,7 +13,7 @@ const ChatInput=({getUserMessages,getClickedUserMessages,user,clickedUser})=>{
             "timestamp":new Date().toISOString()
         }
         try {
-            await axios.post("http://localhost:8000/addmessage", {message})
+            await axios.post("https://tindergarfield.herokuapp.com/addmessage", {message})
             getUserMessages();
             getClickedUserMessages();
             setTextArea("");

@@ -10,7 +10,7 @@ const App = () =>{
     return(
         <BrowserRouter >
           <Routes>
-                <Route path={"/homepage"} index element={<Homepage />}/>
+                <Route path={"/"} index element={<Homepage />}/>
                 {cookies.AuthToken && <Route path="/dashboard" element={<Dashboard />} />}
                 {cookies.AuthToken && <Route path="onboard" element={< OnBoarding/>} />}
           </Routes>

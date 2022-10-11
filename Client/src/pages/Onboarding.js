@@ -29,7 +29,7 @@ const OnBoarding = () => {
         e.preventDefault();
         console.log("on submit");
         try {
-            const response = await axios.put("http://localhost:8000/userUpdate", {formInfo});
+            const response = await axios.put("https://tindergarfield.herokuapp.com/userUpdate", {formInfo});
             const success = response.status === 201;
             if(success) navigate("/dashboard");
         }catch(err)

@@ -10,7 +10,7 @@ const ChatDisplay=({user, clickedUser})=>{
     const clickedUserId=clickedUser?.user_id;
     const getUserMessages= async ()=> {
         try {
-            const response = await axios.get("http://localhost:8000/messages", {
+            const response = await axios.get("https://tindergarfield.herokuapp.com/messages", {
                 params: {
                     "userid": userid,
                     "clickedUserId": clickedUserId
@@ -24,7 +24,7 @@ const ChatDisplay=({user, clickedUser})=>{
     }
     const getClickedUserMessages= async ()=> {
         try {
-            const response = await axios.get("http://localhost:8000/messages", {
+            const response = await axios.get("https://tindergarfield.herokuapp.com/messages", {
                 params: {
                     "userid": clickedUserId,
                     "clickedUserId": userid

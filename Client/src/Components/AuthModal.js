@@ -26,7 +26,7 @@ const AuthModal =({setShowModel , isSignUp , authToken }) =>
                     setError("Passwords need to match");
                     return;
                 }
-                const response = await axios.post(`http://localhost:8000/${isSignUp ? `signup` : `login`}`, {email, password});
+                const response = await axios.post(`https://tindergarfield.herokuapp.com/${isSignUp ? `signup` : `login`}`, {email, password});
                 const success = response.status === 201;
                 setCookie("user_id",response.data.user_id);
                 setCookie("AuthToken",response.data.token);

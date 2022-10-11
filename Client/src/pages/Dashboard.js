@@ -15,7 +15,7 @@ const Dashboard =() =>{
     const getUser =async ()=>{
         try{
 
-           const response=await axios.get('http://localhost:8000/user', { params:
+           const response=await axios.get('https://tindergarfield.herokuapp.com/user', { params:
                    {
                        "user_id":user_id
                    }});
@@ -29,7 +29,7 @@ const Dashboard =() =>{
     const getgenderedUsers=async ()=>{
         try{
             console.log("in gendered users");
-            const response=await axios.get("http://localhost:8000/genderedusers",{
+            const response=await axios.get("https://tindergarfield.herokuapp.com/genderedusers",{
                 params:{
                     "gender_interest":user?.gender_interest
                 }});
@@ -53,7 +53,7 @@ const Dashboard =() =>{
 
     const updateMatches=async (matchedUserid) =>{
         try {
-            const response = await axios.put("http://localhost:8000/addmatch", {user_id, matchedUserid});
+            const response = await axios.put("https://tindergarfield.herokuapp.com/addmatch", {user_id, matchedUserid});
 
             getUser();
 

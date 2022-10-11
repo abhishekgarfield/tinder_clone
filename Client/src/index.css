@@ -23,7 +23,7 @@ body{
     transition: 0.5s all;
 }
 .primaryButton:hover{
-    background:linear-gradient(260deg,#fe3072,#ff5940); ;
+    background:linear-gradient(260deg,#fe3072,#ff5940); cursor: pointer;
 }
 .Home{
     text-align: center;
@@ -93,6 +93,9 @@ nav .navButton{
     word-spacing: 1px;
     font-weight: 500;
     margin: 13px;
+}
+.navButton:hover{
+cursor: pointer;
 }
 nav .navButton:disabled{
     background-color:rgb(189,189,180) ;
